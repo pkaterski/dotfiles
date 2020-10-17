@@ -1,0 +1,8 @@
+CoenraadS.bracket-pair-colorizer
+elmTooling.elm-ls-vscode
+Equinusocio.vsc-community-material-theme
+Equinusocio.vsc-material-theme
+equinusocio.vsc-material-theme-icons
+justusadam.language-haskell
+PKief.material-icon-theme
+vscodevim.vim
