@@ -3,10 +3,11 @@
     "workbench.colorTheme": "Material Theme",
     "workbench.colorCustomizations": {},
     "materialTheme.accent": "Remove accents",
-    "editor.fontFamily": "'Fira Code'",
+    "editor.cursorBlinking": "expand",
+    //"workbench.colorTheme": "Ayu Mirage",
+    "editor.fontFamily": "Hack Nerd Font",
     "editor.fontLigatures": true,
-    // "editor.fontFamily": "hack",
-    "terminal.integrated.fontFamily": "'Hack'",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
     "editor.wordWrap": "on",
     "vim.vimrc.enable": true
 }
