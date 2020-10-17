@@ -1,0 +1,27 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 1,
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "expand",
+    "workbench.colorTheme": "Ayu Mirage",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "liveshare.allowGuestDebugControl": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "[html]": {
+        "editor.defaultFormatter": "SimonSiefke.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+}
