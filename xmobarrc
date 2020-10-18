@@ -31,7 +31,7 @@ Config { font = "xft:Hack Nerd Font:style=Regular:pixelsize:12:antialias=true:hi
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Com "/bin/bash" ["-c", "~/bin/show-volume.sh"] "volume" 10
+                    , Run Com "/bin/bash" ["-c", "~/bin/show-volume.sh"] "volume" 1
                     , Run Com "/bin/bash" ["-c", "~/bin/show-brightness.sh"] "brightness" 10
                     , Run StdinReader
                     ]
