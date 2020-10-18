@@ -11,13 +11,14 @@ import XMonad
 import Data.Monoid
 import System.Exit
 
-import XMonad.Hooks.ManageDocks
-import XMonad.Util.SpawnOnce
-import XMonad.Util.Run
-import XMonad.Layout.NoBorders
+import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Util.Run (spawnPipe)
+import XMonad.Layout.NoBorders (noBorders)
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..))
 import XMonad.Layout.MultiToggle.Instances(StdTransformers(NOBORDERS))
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicLog (ppCurrent, xmobarPP, statusBar, xmobarColor, wrap)
+import XMonad.Layout.Spacing (Border(..), spacingRaw)
+import XMonad.Layout.Grid (Grid(..))
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -39,7 +40,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 3
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -146,6 +147,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Toggle borders 
     , ((modm .|. shiftMask, xK_n ), sendMessage $ Toggle NOBORDERS)
+
+
+    -- Toggle gaps
+    -- , ((modm .|. shiftMask, xK_g), toggleScreenSpacingEnabled)
     ]
     ++
 
@@ -211,7 +216,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = mkToggle (single NOBORDERS) $ avoidStruts $ tiled ||| Mirror tiled ||| noBorders Full
+myLayout
+  = mkToggle (single NOBORDERS)
+  $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True
+  $ tiled ||| Mirror tiled ||| Grid ||| noBorders Full
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
