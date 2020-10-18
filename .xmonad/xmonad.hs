@@ -151,6 +151,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Toggle gaps
     -- , ((modm .|. shiftMask, xK_g), toggleScreenSpacingEnabled)
+
+    -- Switch between keyboard layouts
+    , ((modm .|. shiftMask, xK_quoteright ), spawn "/home/pkaterski/bin/switch-layouts.sh")
     ]
     ++
 
