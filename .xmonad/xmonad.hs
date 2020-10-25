@@ -199,12 +199,13 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
                                        >> windows W.shiftMaster))
 
     --  mod-button2, Raise the window to the top of the stack
-    --, ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
+    , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
 
     -- Push window back into tiling
-    , ((modm, button2), (\w -> do
-                                  focus w
-                                  windows $ W.sink w)
+    , (  (modm .|. shiftMask, button2)
+      ,  \w -> do
+           focus w
+           windows $ W.sink w
       )
 
     -- mod-button3, Set the window to floating mode and resize by dragging
