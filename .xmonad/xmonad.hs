@@ -213,6 +213,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
                                        >> windows W.shiftMaster))
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
+
+    -- Cycle throgh layouts
+    , ((modm .|. shiftMask, button4), \_ -> sendMessage NextLayout)
     ]
 
 ------------------------------------------------------------------------
