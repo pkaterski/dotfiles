@@ -15,7 +15,7 @@ Config { font = "xft:Hack Nerd Font:style=Regular:pixelsize:12:antialias=true:hi
        , iconRoot = "."
        , allDesktops = True
        , overrideRedirect = True
-       , commands = [ Run Weather "LBSF" ["-t","<station>: <tempC>C",
+       , commands = [ Run Weather "LBSF" ["-t","<station><tempC>C",
                                           "-L","18","-H","25",
                                           "--normal","green",
                                           "--high","red",
@@ -29,7 +29,7 @@ Config { font = "xft:Hack Nerd Font:style=Regular:pixelsize:12:antialias=true:hi
                                "--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
-                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Com "uname" ["-r"] "" 36000
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run Com "/bin/bash" ["-c", "~/bin/show-volume.sh"] "volume" 1
                     , Run Com "/bin/bash" ["-c", "setxkbmap -query | awk '/^layout:/ { print $2 }'"] "lang" 1
@@ -39,5 +39,5 @@ Config { font = "xft:Hack Nerd Font:style=Regular:pixelsize:12:antialias=true:hi
        , sepChar = "%"
        , alignSep = "}{"
        , template = "   %StdinReader% | %cpu% | %memory% * %swap% }\
-                    \{ <fc=#ee9a00>%date%</fc>|%volume%|%brightness%|%LBSF% | %lang% | %uname%"
+                    \{ <fc=#ee9a00>%date%</fc>|%volume%|%brightness%|%LBSF%|%lang%|%uname%"
        }
