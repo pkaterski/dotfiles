@@ -87,9 +87,10 @@ set ttyfast
 " autocmd VimEnter * silent !echo -ne "\e[2 q"
 " augroup END
 
-set background=dark
 set termguicolors
+set background=dark
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_light='medium'
 colorscheme gruvbox
 
-let ayucolor="mirage" " for mirage version of theme
 let &t_Co=256
