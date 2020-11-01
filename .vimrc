@@ -43,6 +43,17 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdtree'
 Plug 'luochen1990/rainbow'
 Plug 'vim-airline/vim-airline'
+" purescript
+Plug 'purescript-contrib/purescript-vim'
+
+" haskell
+Plug 'neovimhaskell/haskell-vim'
+
+" dhall
+Plug 'vmchale/dhall-vim'
+
+" elm
+Plug 'dtaskoff/elm-vim'
 call plug#end()
 
 " airline fonts
