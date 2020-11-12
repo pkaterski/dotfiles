@@ -177,6 +177,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     volumeKeys
     ++
     brightnessKeys
+    ++
+    touchpadKeys modm
 
 
 volumeKeys =
@@ -188,6 +190,9 @@ brightnessKeys =
   [ ((0, xF86XK_MonBrightnessUp), spawn "lux -a 10%")
   , ((0, xF86XK_MonBrightnessDown), spawn "lux -s 10%")
   ]
+touchpadKeys modm =
+  [ ((modm              , xK_u), spawn "synclient TouchpadOff=0")
+  , ((modm .|. shiftMask, xK_u), spawn "synclient TouchpadOff=1")]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -305,7 +310,7 @@ myStartupHook = do
 --
 main = do
   -- spawnPipe "xmobar /home/pkaterski/.config/xmobar/xmobar.config"
-  spawnPipe "xautolock -detectsleep -time 20 -locker slock" -- not sure if this works
+  -- spawnPipe "xautolock -detectsleep -time 20 -locker slock" -- not sure if this works
   -- xmonad $ docks defaults
   xmonad =<< statusBar myBar myPP toggleStrutsKey defaults 
 
