@@ -302,6 +302,10 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "compton &"
+  -- don't blank screen
+  spawn "xset s off"
+  spawn "xset s 0 0"
+  spawn "xset -dpms"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
