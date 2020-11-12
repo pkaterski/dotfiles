@@ -136,4 +136,4 @@ PATH=$PATH:/home/pkaterski/.local/bin
 # GHC up
 test -s ~/.alias && . ~/.alias || true
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-
+if [ -e /home/pkaterski/.nix-profile/etc/profile.d/nix.sh ]; then . /home/pkaterski/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
