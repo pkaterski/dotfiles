@@ -103,3 +103,4 @@ let g:gruvbox_contrast_light='medium'
 colorscheme gruvbox
 
 let &t_Co=256
+set shell=/opt/local/bin/zsh
