@@ -179,6 +179,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     brightnessKeys
     ++
     touchpadKeys modm
+    ++
+    [ ((0, xK_Print), spawn "maim ~/Desktop/$(date | sed 's/ /_/g;s/:/-/g').png") ]
 
 
 volumeKeys =
