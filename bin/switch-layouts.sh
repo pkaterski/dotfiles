@@ -7,7 +7,7 @@
 if [[ -n "$1" ]]; then
     setxkbmap $1
 else
-    layout=$(setxkbmap -query | awk 'END{print $2}')
+    layout=$(setxkbmap -query | grep 'layout' | cut -d':' -f2 | sed 's/ //g')
     case $layout in
         us)
                 setxkbmap bg phonetic 
