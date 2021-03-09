@@ -310,6 +310,8 @@ myStartupHook = do
   spawn "xset -dpms"
   -- remap CAPSLOCK to ESC
   spawn "setxkbmap -option caps:escape"
+  -- responsive keyboard
+  spawn "xset r rate 250 50"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
