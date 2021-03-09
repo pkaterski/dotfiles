@@ -38,6 +38,6 @@ Config { font = "xft:Hack Nerd Font:style=Regular:pixelsize:12:antialias=true:hi
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "   %StdinReader% | %cpu% | %memory% * %swap% }\
+       , template = "   %StdinReader% | %cpu% | %memory% * %swap% }\
                     \{ <fc=#ee9a00>%date%</fc>|%volume%|%brightness%|%LBSF%|%lang%|%uname%"
        }
