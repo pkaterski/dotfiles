@@ -16,7 +16,7 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Layout.NoBorders (noBorders)
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..))
 import XMonad.Layout.MultiToggle.Instances(StdTransformers(NOBORDERS))
-import XMonad.Hooks.DynamicLog (ppCurrent, xmobarPP, statusBar, xmobarColor, wrap)
+import XMonad.Hooks.DynamicLog (ppCurrent, ppTitle, shorten, xmobarPP, statusBar, xmobarColor, wrap)
 import XMonad.Layout.Spacing (Border(..), spacingRaw)
 import XMonad.Layout.Grid (Grid(..))
 
@@ -63,7 +63,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#dd4242"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -311,7 +311,7 @@ myStartupHook = do
   -- remap CAPSLOCK to ESC
   spawn "setxkbmap -option caps:escape"
   -- responsive keyboard
-  spawn "xset r rate 250 50"
+  spawn "xset r rate 250 40"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -328,7 +328,9 @@ main = do
 myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
-myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
+myPP = xmobarPP { ppCurrent = xmobarColor "#929942" "" . wrap "{" "}"
+                , ppTitle   = xmobarColor "#929942" "" . shorten 50
+                }
 
 -- Key binding to toggle the gap for the bar.
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
