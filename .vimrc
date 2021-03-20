@@ -10,6 +10,9 @@ set number
 set relativenumber
 inoremap jk <esc>
 
+" nnoremap Z <Nop>
+" nnoremap ZZ <Nop>
+
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
