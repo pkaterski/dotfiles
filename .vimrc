@@ -39,7 +39,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdtree'
 Plug 'luochen1990/rainbow'
 Plug 'dense-analysis/ale'
@@ -61,7 +61,7 @@ Plug 'dtaskoff/elm-vim'
 Plug 'rust-lang/rust.vim'
 
 " rescript
-Plug 'rescript-lang/vim-rescript'
+" Plug 'rescript-lang/vim-rescript'
 call plug#end()
 
 " airline fonts
