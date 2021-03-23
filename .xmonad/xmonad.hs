@@ -304,6 +304,7 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom &"
+  spawnOnce "pulseaudio"
   -- don't blank screen
   spawn "xset s off"
   spawn "xset s 0 0"
