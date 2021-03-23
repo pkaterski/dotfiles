@@ -303,7 +303,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
-  spawnOnce "compton &"
+  spawnOnce "picom &"
   -- don't blank screen
   spawn "xset s off"
   spawn "xset s 0 0"
