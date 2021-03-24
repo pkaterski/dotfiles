@@ -2,12 +2,14 @@
     "window.zoomLevel": 1,
     "workbench.colorTheme": "Material Theme",
     "workbench.colorCustomizations": {},
-    "materialTheme.accent": "Remove accents",
+    "materialTheme.accent": "Lime",
     "editor.cursorBlinking": "expand",
     //"workbench.colorTheme": "Ayu Mirage",
     "editor.fontFamily": "Hack Nerd Font",
     "editor.fontLigatures": true,
     "terminal.integrated.fontFamily": "Hack Nerd Font",
     "editor.wordWrap": "on",
-    "vim.vimrc.enable": true
+    "vim.vimrc.enable": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "keyboard.dispatch": "keyCode"
 }
