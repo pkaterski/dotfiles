@@ -13,10 +13,10 @@ inoremap jk <esc>
 " nnoremap Z <Nop>
 " nnoremap ZZ <Nop>
 
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+" noremap <up> <nop>
+" noremap <down> <nop>
+" noremap <left> <nop>
+" noremap <right> <nop>
 " noremap <esc> <nop>
 
 set tabstop=2
@@ -38,6 +38,7 @@ set backspace=1
 call plug#begin()
 " Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -112,7 +113,7 @@ set termguicolors
 set background=dark
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_contrast_light='medium'
-colorscheme gruvbox
+colorscheme gruvbox-material
 let &t_ut=''
 
 let &t_Co=256
