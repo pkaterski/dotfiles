@@ -304,13 +304,18 @@ myLogHook = return ()
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "picom &"
-  spawnOnce "pulseaudio"
+
+  -- This is acting weird with both KDE & xmonad. TODO: investigate
+  -- spawnOnce "pulseaudio"
+
   -- don't blank screen
   spawn "xset s off"
   spawn "xset s 0 0"
   spawn "xset -dpms"
+
   -- remap CAPSLOCK to ESC
   spawn "setxkbmap -option caps:escape"
+
   -- responsive keyboard
   spawn "xset r rate 250 40"
 
