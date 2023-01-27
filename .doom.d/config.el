@@ -77,7 +77,9 @@
 ;; they are implemented.
 
 
-(setq initial-frame-alist '((top . 50) (left . 170) (width . 103) (height . 35)))
+;; (setq initial-frame-alist '((top . 50) (left . 170) (width . 103) (height . 35)))
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+
 ;;(setq doom-theme 'spacemacs-dark)
 (setq evil-normal-state-cursor '(box "orange")
       evil-insert-state-cursor '(bar "medium sea green")
