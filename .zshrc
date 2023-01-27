@@ -1,22 +1,26 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# MacPorts Installer addition on 2019-10-20_at_10:03:24: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# start tmux automatically
+# if [ "$TMUX" = "" ]; then tmux; fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/pkaterski/.oh-my-zsh"
+export ZSH="/Users/pkaterski/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,12 +75,20 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Lazy load nvm
+export NVM_LAZY_LOAD=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  #tmux
+  zsh-syntax-highlighting
+  zsh-nvm
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,11 +100,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,33 +119,89 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-
-# node version manager
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pkaterski/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pkaterski/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pkaterski/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pkaterski/miniconda3/bin:$PATH"
-    fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-PATH=$PATH:/home/pkaterski/.local/bin
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-# GHC up
-test -s ~/.alias && . ~/.alias || true
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-if [ -e /home/pkaterski/.nix-profile/etc/profile.d/nix.sh ]; then . /home/pkaterski/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/pkaterski/programs/google-cloud-skd/path.zsh.inc' ]; then . '/Users/pkaterski/programs/google-cloud-skd/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/pkaterski/programs/google-cloud-skd/completion.zsh.inc' ]; then . '/Users/pkaterski/programs/google-cloud-skd/completion.zsh.inc'; fi
+
+export PATH="/Users/pkaterski/.local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+
+
+export CLICOLOR=1
+
+lazy_conda_aliases=('python' 'conda')
+
+load_conda() {
+  for lazy_conda_alias in $lazy_conda_aliases
+  do
+    unalias $lazy_conda_alias
+  done
+
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('/Users/pkaterski/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/Users/pkaterski/miniconda3/etc/profile.d/conda.sh" ]; then
+          . "/Users/pkaterski/miniconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/Users/pkaterski/miniconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+
+  unfunction load_conda
+}
+
+for lazy_conda_alias in $lazy_conda_aliases
+do
+  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
+done
+
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/pkaterski/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Users/pkaterski/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/Users/pkaterski/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Users/pkaterski/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+
+#if [ -e /Users/pkaterski/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/pkaterski/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# [ -f "/Users/pkaterski/.ghcup/env" ] && source "/Users/pkaterski/.ghcup/env" # ghcup-env
+
+# general bins
+export PATH="/Users/pkaterski/programs/bin/:$PATH"
+
+# cabal bin
+export PATH="/Users/pkaterski/.cabal/bin/:$PATH"
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/pkaterski/.sdkman"
+[[ -s "/Users/pkaterski/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/pkaterski/.sdkman/bin/sdkman-init.sh"
+
+
+alias nv="neovide --maximized --multigrid"
+
+[ -f "/Users/pkaterski/.ghcup/env" ] && source "/Users/pkaterski/.ghcup/env" # ghcup-env
