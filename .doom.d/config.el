@@ -111,3 +111,6 @@
 
 ;; eshell lag
 (add-hook 'eshell-mode-hook (lambda() (company-mode 0)))
+
+;; start node (which is lazy loaded through in zshrc through nvm)
+(shell-command "node")
