@@ -90,7 +90,7 @@
 ;; these are the defaults (before I changed them)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0.2
-      company-minimum-prefix-length 2)
+      company-minimum-prefix-length 1)
 (defun complete-or-indent ()
   (interactive)
   (if (company-manual-begin)
@@ -108,3 +108,6 @@
 ;; lsp
 (after! lsp-ui
   (setq lsp-ui-doc-show-with-mouse t))
+
+;; eshell lag
+(add-hook 'eshell-mode-hook (lambda() (company-mode 0)))
