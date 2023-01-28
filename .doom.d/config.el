@@ -106,4 +106,5 @@
 (evil-define-key 'insert vterm-mode-map (kbd "M-<backspace>") 'vterm-send-meta-backspace)
 
 ;; lsp
-(setq lsp-ui-doc-show-with-mouse t)
+(after! lsp-ui
+  (setq lsp-ui-doc-show-with-mouse t))
