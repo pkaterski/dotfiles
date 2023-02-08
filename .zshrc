@@ -205,3 +205,6 @@ export SDKMAN_DIR="/Users/pkaterski/.sdkman"
 alias nv="neovide --maximized --multigrid"
 
 [ -f "/Users/pkaterski/.ghcup/env" ] && source "/Users/pkaterski/.ghcup/env" # ghcup-env
+
+# Doom Emacs bin
+export PATH="/Users/pkaterski/.emacs.d/bin/:$PATH"
